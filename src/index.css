@@ -29,16 +29,47 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 400px;
-  height: 500px;
+  height: 400px;
   background-color: rgb(237, 237, 237);
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 15px;
+  margin-bottom: 30px;
   border-radius: 10px;
   border: 2px solid black;
   padding: 10px 0;
 }
 
+.control-settings {
+  display: flex;
+  width: 400px;
+  height: 40px;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-top: 15px;
+}
+.control-button {
+  cursor: pointer;
+  width: 50px;
+  color: white;
+  border: 3px solid gray;
+  background-color: rgb(67, 67, 67);
+  font-size: 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.control-button:hover {
+  background-color: rgb(25, 103, 152);
+  border: 3px solid rgb(98, 175, 223);
+}
+
+.control-button:active {
+  background-color: rgb(13, 48, 70);
+  border: 3px solid rgb(98, 175, 223);
+}
+
 .calbutton {
+  cursor: pointer;
   display: flex;
   flex: 0 0 21%;
   width: 50px;

@@ -102,13 +102,52 @@ class Calculator extends Component {
       decimal: cuurentDecimal
     });
   };
+  handleOn = () => {
+    this.setState({
+      preOperator: "",
+      operator: "",
+      n1: "",
+      n2: "",
+      result: 0,
+      displayValue: 0,
+      decimal: ""
+    });
+  };
+  handleOff = () => {
+    this.setState({
+      preOperator: "",
+      operator: "",
+      n1: "",
+      n2: "",
+      result: 0,
+      displayValue: "",
+      decimal: ""
+    });
+  };
+  handleAc = () => {
+    this.setState({
+      preOperator: "",
+      operator: "",
+      n1: "",
+      n2: 0,
+      result: 0,
+      displayValue: 0,
+      decimal: ""
+    });
+  };
 
   render() {
     const { symbols, displayValue } = this.state;
     return (
       <div className="calculator">
         <Displayer displayValue={displayValue} />
-        <Buttons symbols={symbols} onAction={this.handleClick} />
+        <Buttons
+          symbols={symbols}
+          onAction={this.handleClick}
+          onTurnOn={this.handleOn}
+          onTurnOff={this.handleOff}
+          onAC={this.handleAc}
+        />
       </div>
     );
   }
