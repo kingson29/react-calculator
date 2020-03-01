@@ -3,10 +3,12 @@ import Button from "./button";
 
 class Buttons extends Component {
   render() {
-      const { symbols } = this.props;
+    const { symbols, onAction } = this.props;
     return (
-      <div class="button-area">
-          {symbols.map(s => <Button symbol={s} />)}
+      <div className="button-area">
+        {symbols.map(s => (
+          <Button key={s} symbol={s} onAction={() => onAction(s)} />
+        ))}
       </div>
     );
   }
