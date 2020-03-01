@@ -6,7 +6,7 @@ class Calculator extends Component {
   state = {};
   render() {
     return (
-      <div className="container">
+      <div className="calculator">
         <Displayer />
         <Buttons />
       </div>
