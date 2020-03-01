@@ -2,26 +2,11 @@ import React, { Component } from "react";
 import Button from "./button";
 
 class Buttons extends Component {
-  state = {};
   render() {
+      const { symbols } = this.props;
     return (
       <div class="button-area">
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-        <Button />
+          {symbols.map(s => <Button symbol={s} />)}
       </div>
     );
   }
