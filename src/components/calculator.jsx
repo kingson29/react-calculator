@@ -49,8 +49,8 @@ class Calculator extends Component {
         previousOperator,
         currentN2
       );
-      currentN1 = "";
-      currentN2 = "";
+      currentN1 = currentN2;
+      currentN2 = currentResult;
       cuurentDecimal = "";
       currentDisplayValue = currentResult;
     }
