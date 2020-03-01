@@ -7,9 +7,10 @@ class Calculator extends Component {
     symbols: [1, 2, 3, "+", 4, 5, 6, "-", 7, 8, 9, "x", 0, ".", "=", "/"],
     preOperator: "",
     operator: "",
-    n1: "0",
-    n2: "0",
-    result: 0
+    n1: "",
+    n2: "",
+    result: 0,
+    displayValue: ""
   };
   calculateResult(n1_input, preOperator, n2_input) {
     let n1 = parseFloat(n1_input);
@@ -22,24 +23,31 @@ class Calculator extends Component {
   }
 
   handleClick = action => {
-    const { preOperator, operator, n1, n2, result } = this.state;
+    const { preOperator, operator, n1, n2, result, displayValue } = this.state;
     let previousOperator = preOperator;
     let currentOperator = operator;
     let currentN1 = n1;
     let currentN2 = n2;
     let currentResult = result;
+    let currentDisplayValue = displayValue;
+
     if (action === "=") {
       currentResult = this.calculateResult(
         currentN1,
         previousOperator,
         currentN2
       );
+      currentDisplayValue = currentResult;
     }
     if (["+", "-", "x", "/"].includes(action)) {
       //if the current operation is "operator"
-      currentOperator = action;
-      currentN1 = currentN2;
-      currentN2 = 0; // shift n2 to n1 and set n2 to 0
+      if (["+", "-", "x", "/"].includes(currentOperator)) {
+        currentOperator = action;
+      } else {
+        currentOperator = action;
+        currentN1 = currentN2;
+        currentN2 = 0; // shift n2 to n1 and set n2 to 0
+      }
     }
     if (typeof action === "number") {
       //if the current operation is "number"
@@ -51,21 +59,23 @@ class Calculator extends Component {
       } else {
         currentN2 += action.toString();
       }
+      currentDisplayValue = currentN2;
     }
     this.setState({
       preOperator: previousOperator,
       operator: currentOperator,
       n1: currentN1,
       n2: currentN2,
-      result: currentResult
+      result: currentResult,
+      displayValue: currentDisplayValue
     });
   };
 
   render() {
-    const { symbols } = this.state;
+    const { symbols, displayValue } = this.state;
     return (
       <div className="calculator">
-        <Displayer />
+        <Displayer displayValue={displayValue} />
         <Buttons symbols={symbols} onAction={this.handleClick} />
       </div>
     );
