@@ -11,7 +11,8 @@ class Calculator extends Component {
     n2: "",
     result: 0,
     displayValue: "",
-    decimal: ""
+    decimal: "",
+    maxDigitShown: 25
   };
   calculateResult(n1_input, preOperator, n2_input) {
     let n1 = !parseFloat(n1_input) ? 0 : parseFloat(n1_input);
@@ -31,7 +32,8 @@ class Calculator extends Component {
       n2,
       result,
       displayValue,
-      decimal
+      decimal,
+      maxDigitShown
     } = this.state;
     let previousOperator = preOperator;
     let currentOperator = operator;
@@ -83,6 +85,13 @@ class Calculator extends Component {
         currentN2 = currentN2;
       }
     }
+    //limit length of currentN2 and displayValue
+
+    currentN2 = currentN2.toString().slice(0, maxDigitShown);
+    currentDisplayValue = currentDisplayValue
+      .toString()
+      .slice(0, maxDigitShown);
+
     this.setState({
       preOperator: previousOperator,
       operator: currentOperator,
